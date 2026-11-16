@@ -1,0 +1,216 @@
+{
+  "_note": "웹 AI 세션 셀렉터. 사이트 UI 가 바뀌면 이 파일만 고치면 되고 재배포가 필요 없다(원격 갱신).",
+  "_note_보안": "chatUrl 은 https 이면서 아래 허용 도메인이어야만 반영된다. 보고서·증빙 본문이 임의 서버로 나가는 것을 막는다.",
+  "_note_ollama": "개인화판에는 로컬 LLM(Ollama)이 없다. 각 사용자가 자기 계정으로 로그인한 웹 AI 를 쓴다.",
+  "_remoteUrl": "https://raw.githubusercontent.com/choi92-png/hscertify-pro-config/main/selectors.json",
+  "claude-web": {
+    "label": "Claude",
+    "chatUrl": "https://claude.ai/new",
+    "loginUrl": "https://claude.ai/login",
+    "partition": "persist:ai-claude",
+    "input": [
+      "div.tiptap.ProseMirror",
+      "div[contenteditable=\"true\"]"
+    ],
+    "login": [
+      "[data-testid=\"user-menu-trigger\"]",
+      "div.tiptap.ProseMirror"
+    ],
+    "loginOut": [
+      "a[href*=\"/login\"]",
+      "a[href*=\"/magic-link\"]"
+    ],
+    "send": [
+      "button[aria-label=\"메시지 보내기\"]",
+      "button[aria-label*=\"Send\" i]",
+      "button[aria-label*=\"보내기\"]",
+      "button[data-testid=\"send-button\"]"
+    ],
+    "streaming": [
+      "button[aria-label=\"응답 중단\"]",
+      "[data-is-streaming=\"true\"]",
+      "button[aria-label*=\"중단\"]",
+      "button[aria-label*=\"Stop\" i]",
+      "button[data-testid*=\"stop\" i]"
+    ],
+    "answer": [
+      "[data-is-streaming=\"false\"]",
+      "[data-is-streaming]"
+    ],
+    "models": [
+      {
+        "id": "",
+        "label": "사이트 기본값"
+      },
+      {
+        "id": "opus",
+        "label": "Opus",
+        "pickText": "Opus"
+      },
+      {
+        "id": "sonnet",
+        "label": "Sonnet",
+        "pickText": "Sonnet"
+      },
+      {
+        "id": "haiku",
+        "label": "Haiku",
+        "pickText": "Haiku"
+      },
+      {
+        "id": "fable-5-1",
+        "label": "Fable 5.1 (크레딧 필요)",
+        "pickText": "Fable 5.1"
+      },
+      {
+        "id": "fable-5",
+        "label": "Fable 5 (크레딧 필요)",
+        "pickText": "Fable 5"
+      }
+    ],
+    "modelMenu": [
+      "[data-testid=\"model-selector-dropdown\"]",
+      "button[aria-haspopup=\"menu\"][aria-label*=\"모델\"]",
+      "button[aria-haspopup=\"menu\"][aria-label*=\"model\" i]"
+    ],
+    "modelItem": [
+      "[role=\"menuitem\"]",
+      "[role=\"option\"]"
+    ],
+    "modelLabel": [
+      "[data-testid=\"model-selector-dropdown\"]"
+    ]
+  },
+  "chatgpt-web": {
+    "label": "ChatGPT",
+    "chatUrl": "https://chatgpt.com/",
+    "loginUrl": "https://chatgpt.com/auth/login",
+    "partition": "persist:ai-chatgpt",
+    "input": [
+      "#prompt-textarea",
+      "div[contenteditable=\"true\"]",
+      "textarea[placeholder]"
+    ],
+    "login": [
+      "#prompt-textarea",
+      "div[contenteditable=\"true\"]",
+      "[data-testid=\"send-button\"]"
+    ],
+    "loginOut": [
+      "a[href*=\"/auth/login\"]",
+      "button[data-testid=\"login-button\"]"
+    ],
+    "send": [
+      "button[data-testid=\"send-button\"]",
+      "button[aria-label*=\"Send\" i]",
+      "button[aria-label*=\"보내기\"]",
+      "button[type=\"submit\"]"
+    ],
+    "streaming": [
+      "button[data-testid=\"stop-button\"]",
+      "button[aria-label*=\"Stop\" i]",
+      "button[aria-label*=\"중지\"]",
+      "button[aria-label*=\"중단\"]"
+    ],
+    "answer": [
+      "div[data-message-author-role=\"assistant\"]",
+      ".markdown.prose",
+      "[data-turn=\"assistant\"] .markdown",
+      "div.agent-turn .markdown",
+      "[data-turn=\"assistant\"]",
+      "div.agent-turn",
+      "[data-message-author-role=\"assistant\"] .markdown",
+      "[data-message-author-role=\"assistant\"]",
+      "div.markdown"
+    ],
+    "models": [
+      {
+        "id": "",
+        "label": "사이트 기본값 — ChatGPT 창에서 직접 고릅니다"
+      }
+    ],
+    "modelMenu": [
+      "[data-testid=\"model-switcher-dropdown-button\"]",
+      "button[aria-label*=\"모델\"]"
+    ],
+    "modelItem": [
+      "[role=\"menuitem\"]",
+      "[role=\"option\"]"
+    ],
+    "modelLabel": [
+      "[data-testid=\"model-switcher-dropdown-button\"]"
+    ]
+  },
+  "gemini-web": {
+    "label": "Gemini",
+    "chatUrl": "https://gemini.google.com/app",
+    "loginUrl": "https://gemini.google.com/",
+    "partition": "persist:ai-gemini",
+    "input": [
+      "rich-textarea .ql-editor",
+      ".ql-editor[contenteditable=\"true\"]",
+      "rich-textarea [contenteditable]",
+      "div[contenteditable=\"true\"][data-placeholder]",
+      "div[contenteditable=\"true\"]"
+    ],
+    "login": [
+      "rich-textarea",
+      ".ql-editor",
+      "div[contenteditable=\"true\"]",
+      "ms-prompt-input"
+    ],
+    "loginOut": [
+      "a[href*=\"accounts.google.com/ServiceLogin\"]",
+      "a[href*=\"ServiceLogin\"]"
+    ],
+    "send": [
+      "button.send-button",
+      "button[aria-label*=\"Send\" i]",
+      "button[aria-label*=\"전송\"]",
+      "ms-send-button button"
+    ],
+    "streaming": [
+      "button[aria-label*=\"Stop\" i]",
+      ".stop-button",
+      "[data-is-generating=\"true\"]",
+      "model-response [aria-busy=\"true\"]"
+    ],
+    "answer": [
+      "model-response .markdown-main-panel",
+      "model-response .response-content",
+      "model-response",
+      ".model-response-text"
+    ],
+    "models": [
+      {
+        "id": "",
+        "label": "사이트 기본값"
+      },
+      {
+        "id": "pro",
+        "label": "Pro",
+        "pickText": "Pro"
+      },
+      {
+        "id": "flash",
+        "label": "Flash",
+        "pickText": "Flash"
+      }
+    ],
+    "modelMenu": [
+      "bard-mode-switcher button",
+      "button[aria-haspopup=\"menu\"]"
+    ],
+    "modelItem": [
+      "[role=\"menuitemradio\"]",
+      "[role=\"menuitem\"]",
+      "[role=\"option\"]"
+    ],
+    "modelLabel": [
+      "bard-mode-switcher button"
+    ]
+  },
+  "_note_input": "input = 프롬프트를 넣을 편집기. login 과 겹칠 수 있지만 역할이 달라 따로 둔다.",
+  "_note_chatgpt모델": "ChatGPT 에는 모델 목록을 두지 않는다. ?model=<슬러그> 는 OpenAI 가 모델을 갈 때마다 조용히 무시되고 기본 모델로 떨어진다 — gpt-4o·o3 가 그렇게 죽은 항목이었고, 화면에는 고른 것처럼 보였다. 지정하지 않으면 ChatGPT 창에 설정된 모델을 그대로 쓰고, 앱은 그 창이 말하는 실제 모델을 기록한다. 지금 메뉴에 뜨는 이름을 알면 { id, label, pickText } 줄을 더하면 되고 재배포는 필요 없다.",
+  "_note_model": "모델 선택. 제공자마다 방식이 다르다. url 이 있으면 그 주소로 들어가 강제한다(ChatGPT 방식). url 이 없으면 menu 를 눌러 pickText 와 같은 글자를 찾아 누른다(Claude·Gemini 방식) — 사이트 UI 가 바뀌면 실패할 수 있다. id 가 빈 항목은 '사이트 기본값'으로, 아무것도 건드리지 않는다. 목록에 없는 모델은 이 파일에 줄을 더하면 된다. label 은 화면에 보일 이름, pickText 는 사이트 메뉴에 실제로 뜨는 글자."
+}
